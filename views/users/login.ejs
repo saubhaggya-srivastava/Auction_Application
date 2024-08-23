@@ -1,0 +1,93 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/styles.css" />
+
+<div class="formContainer">
+    <div class="loginForm">
+        <div class="loginH1">Login</div>
+        <form id="form" action="/users/login" method="POST">
+            <div id="error"></div>
+            <div class="">
+                <div>
+                    <label class="formLable" for="">Email</label>
+                </div>
+                <div>
+                    <input name="email" type="email" class="formInput" id="email" />
+                </div>
+                
+            </div>
+            <div class="">
+                <div class="password-wrapper">
+                    <label class="formLable" for="">Password</label>
+                    <!-- <div id="error-password"></div> -->
+                    <a class="formLink" href="/users/forgot-password">Forgot Password</a>
+                </div>
+                
+                <input name="password" type="password" class="formInput" id="password" />
+            </div>
+            <div class="">
+                <button type="submit" class="formSubmitButton">
+                    Sign In
+                </button>
+            </div>
+    
+            <!-- <div class="">Don't have an account</div> -->
+            <div class="formLink">
+                <a href="/users/register">Create new account</a>
+            </div>
+            
+            <!-- <a href="/users/forgot-password">Forgot Password</a> -->
+        </form>
+    </div>
+</div>
+
+<script src="/js/user/loginPage.js"></script>
+
+
+<!-- <div class="">
+    <div class="">
+        <div class="">
+            <h1 class="">Login</h1>
+                
+                <form action="/users/login" method="POST">
+                    <div class="">
+                        <label for="">Email</label>
+                        <input name="email" type="email" class="" id="email" />
+                    </div>
+                    <div class="">
+                        <label for="">Password</label>
+                        <a href="/users/forgot-password">Forgot Password</a>
+                        <input name="password" type="password" class="" id="password" />
+                    </div>
+                    <div class="">
+                        <button type="submit" class="">
+                            Sign In
+                        </button>
+                    </div>
+
+                    <div class="">Don't have an account</div>
+                    <a href="/users/register">Create new account</a>
+                    <a href="/users/forgot-password">Forgot Password</a>
+                </form>
+        </div>
+    </div>
+    
+</div> -->
+
+<!-- <h1>Login with email or phone</h1>
+<form action="/users/login" method="POST">
+    <div>
+        <label for="email">Login</label>
+    </div>
+    <div>
+        <input type="text" name="email" id="email" placeholder="email">
+    </div>
+    <div>
+        <label for="password">Password</label>
+    </div>
+    <div>
+        <input type="password" name="password" id="password">
+    </div>
+    <div>
+        <button type="submit">Login</button>
+    </div>
+</form> -->

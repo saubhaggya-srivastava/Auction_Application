@@ -1,0 +1,115 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="product-container">
+    <div class="image-container swiper">
+        <div class="swiper-wrapper">
+            <% for (let image of product.images){  %>
+                <div class="swiper-slide">
+                    <img class="product-image" src="<%= image.path %> ">
+                </div>
+                <% }%>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <div class="product-details">
+        <!-- <h1><%= product.title %> </h1>
+        <p><%= product.description %></p>
+        <p>Category</p>
+        <p>Base Price</p>
+        <p>Current Price</p> -->
+        <h1 class="product__title-big"><%= product.title %></h1>
+        <p class="product__body-big"><%= product.description %></p>
+        <div class="wrapper-1">
+            <p class="current-price"> <span class="current-price__currency">&#8377;</span>
+                <%= product.currentHighestBid.amount || product.basePrice %> /-</p>
+            <p class="countdown-timer" id="timer"></p>
+        </div>
+        <div class="wrapper-2">
+            <p>Current Price</p>
+            <p>Time Remaining</p>
+        </div>
+        <div id="bid-form">
+            <form id="form" action="/users/<%= product._id %>/bid" method="post">
+                <div id="error"></div>
+                <input id="bidAmount" class="formInput" type="number" min="<%= product.currentHighestBid.amount + 1 || product.basePrice + 1 %>"
+                name="amount" placeholder="&#8377;">
+                <!-- "&#8377; "> -->
+                <div class="place-bid">
+                    <button class="place-bid_button" id="placeBid">Place Bid</button>
+                </div>
+            </form>
+            <div class="quick-bid-grid">
+            <input class="quick-bid-price-input" type="number" name="" id="displayQuickBid" disabled>
+            <form action="/users/<%= product._id %>/bid" method="post">
+                    <!-- <div class="quick-bid-price-input-container">-->
+                    <input class="quick-bid-price-input" type="number" name="amount" id="quickBidInput" value="" hidden > <!-- </div> -->
+                    <div class="quick-bid"><button class="quick-bid_button" type="submit" id="quickBid">Quick Bid</button></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- These two divs will get populated once the auction is over. -->
+<div class="container product-winner-container button" onmousedown="party.confetti(this)">
+    <% if(product.auctionStatus === false) { %>
+        <% if(product.currentHighestBid?.user?._id.toString() === currentUser?._id.toString() ) { %> 
+            <div id="bid-container"></div>
+            <div id="contact-seller"></div>
+        <% } %> 
+    <% } %> 
+</div>
+
+<!-- 
+<h3>Title</h3>
+<p><%= product.title %> </p>
+<h3>Description</h3>
+<p><%= product.description %></p>
+<h3>Category</h3>
+<p><%= product.category %> </p>
+<h3>Base Price</h3>
+<p> &#8377; <%= product.basePrice %> </p>
+
+<div id="submit-bid">
+    <form action="/users/<%= product._id %>/bid" method="post">
+        <input type="number" min="<%= product.currentHighestBid.amount + 100 || product.basePrice + 100 %>"
+            name="amount" placeholder="Enter your bid" required>
+        <button class="btn btn-success" type="submit">Submit Bid</button>
+    </form>
+    <form action="/users/<%= product._id %>/bid" method="post">
+        <input type="text" name="amount"
+            value="<%= product.currentHighestBid.amount + 100 || product.basePrice + 100 %>" hidden>
+        <button class="btn btn-primary" type="submit">Quick Bid
+            <%= product.currentHighestBid.amount + 100 || product.basePrice + 100 %></button>
+    </form>
+</div>
+
+<h3>Start Time</h3>
+<p class="startTime"><%= product.startTime %> </p>
+<h3>Duration</h3>
+<p><%= product.duration %> Days</p>
+<h3>Listed by</h3>
+<a href="/users/<%= product.user?._id || '#' %>"><%= product.user?.firstName || 'Deleted User'%></a>
+<hr>
+<h1>Time Remaining</h1>
+<p id="timer"></p>
+
+<br> -->
+
+
+
+<script>
+    const NODE_ENV = '<%= process.env.NODE_ENV %>';
+    let basePrice = '<%- product.basePrice %>';
+    let startTime = '<%- product.startTime %>';
+    let endTime = '<%- product.endTime %>';
+    const duration = '<%- product.duration %>';
+    let highestBidInfo = '<%- JSON.stringify(product.currentHighestBid).replace(/[\/\(\)\']/g, "&apos;") %>';
+    let auctionStatus = '<%- product.auctionStatus %>';
+    const productId = '<%- product._id %>';
+    let loggedinUserId = '<%- JSON.stringify(currentUser)?.replace(/[\/\(\)\']/g, "&apos;") %>';
+</script>
+<script src="/js/product/productPage.js"></script>

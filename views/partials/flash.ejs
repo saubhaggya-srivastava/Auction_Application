@@ -1,0 +1,13 @@
+<% if(success && success.length){ %> 
+    <div style="margin: 0;" class="uk-alert-primary" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <p> <%= success %> </p>
+    </div>
+<% } %> 
+
+<% if(error && error.length) { %> 
+    <div style="margin: 0;" class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <p> <%= error %> </p>
+    </div>
+<% } %>

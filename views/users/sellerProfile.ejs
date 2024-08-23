@@ -1,0 +1,21 @@
+<% layout('layouts/boilerplate') %>
+<!-- <link rel="stylesheet" href="/css/profile.css" /> -->
+<div id="container" class="dashboard-container container prod-container">
+    <div class="dashboard-section-1">
+        <div class="profile-dashboard-section-1__profile-image-container">
+            <div class="dashboard-section-1__profile-image"><img src="<%= user.avatar?.rounded %> " alt="" class="center" /></div>
+        </div>
+    </div>
+    <div class="dashboard-section-2 div2" style="display: block;">
+        <div class="profile-dashboard-section-1__username" style="text-transform: capitalize;"> <%= user.fullName %> </div>
+        <h3><%= user.email %></h3>
+        <% if(user.products.length){ %>
+        <h2>Listed items</h2>
+        <ul>
+            <% for (product of user.products){ %>
+            <li><a href="/products/<%= product._id %>"><%= product.title %></a></li>
+            <% } %>
+        </ul>
+        <% } %>
+    </div>
+</div>

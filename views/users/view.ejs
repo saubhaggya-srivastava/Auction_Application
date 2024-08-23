@@ -1,0 +1,17 @@
+<% layout('layouts/boilerplate') %> 
+<div class="dashboard-container container prod-container">
+    <div class="dashboard-section-1">
+        <div class="profile-dashboard-section-1__profile-image-container">
+            <div class="dashboard-section-1__profile-image"><img src="<%= user.avatar?.path %> " alt=""></div>
+        </div>        
+    </div>
+    <div class="dashboard-section-2 div2" style="display: block;">
+        <div class="profile-dashboard-section-1__username" style="text-transform: capitalize;"> <%= user.fullName %> </div>
+        <h3>Listed items</h3>
+        <ul>
+            <% user.products.forEach( product => { %>
+                <li><a href="/products/<%= product._id %>"><%= product.title %></a></li>
+            <% }) %>
+        </ul>
+    </div>
+</div>

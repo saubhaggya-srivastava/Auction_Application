@@ -1,0 +1,75 @@
+<% layout('layouts/boilerplate') %>
+
+
+<link rel="stylesheet" href="/css/styles.css" />
+
+<div class="formContainer-signup container">
+    <div class="loginForm">
+            <div class="loginH1-newProd">Create auction<br><div class="loginH2-newProd">Add a new product:</div></div>
+            <form id="form" action="/products/new" method="POST" enctype="multipart/form-data">
+                <div id="error"></div>
+                <div class="formGrid">
+                    <div class="formSection">
+                        <label class="formLable" for="title">Title</label>
+                        <input type="text" name="title" class="formInput" id="title">
+                    </div>
+                    <div class="formSection">
+                        <label class="formLable" for="description">Description</label>
+                        <input type="text" name="description" class="formInput" id="description">
+                    </div>
+                    <div class="formSection">
+                        <label class="formLable" for="base_price">Base Price</label>
+                        <input type="number" name="basePrice" step="any" class="formInput" id="base_price">
+                    </div>
+                    <div class="formSection">
+                        <label class="formLable" for="category">Select Category</label>
+                    
+                        <select class="formInput" name="category" class="form-control" id="category">
+                            <option value="art">Art</option>
+                            <option value="antiques">Antiques</option>
+                            <option value="vehicle">Vehicle</option>
+                            <option value="books">Books</option>
+                            <option value="collectible">Collectible</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="formSection">
+                        <label class="formLable" for="images">Add Image</label>
+                        <!-- <input id="prod-images" type="file" name="images" class="formInput-file" id="images" multiple required> -->
+                        
+
+                        <div class="formInput-file__container">
+                            <label for="file" class="formInput-file">
+                                <div id="fileLabel" class="formInput-file__flex">Choose File</div>
+                            </label>
+                        </div>
+                        <input id="file" type="file" name="images" class="formInput-file" onchange="pressed()" multiple>
+
+
+
+
+                    </div>
+                    <div class="formSection">
+                        <label class="formLable" for="startTime">Start Time</label>
+                   
+                        <input type="datetime-local" name="startTime" class="formInput" id="startTime">
+                    </div>
+                    <div class="formSection">
+                        <label class="formLable" for="duration">Duration</label>
+                        <select class="formInput" name="duration" class="formInput" id="duration">
+                            <option value="3">3 days</option>
+                            <option value="5">5 days</option>
+                            <option value="7">7 days</option>
+                            <option value="10">10 days</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="">
+                    <button type="submit" class="formSubmitButton new-prod-button">Submit</button>
+                </div>
+            </form>
+    </div>
+</div>
+
+<script src="/js/product/newProduct.js"></script>

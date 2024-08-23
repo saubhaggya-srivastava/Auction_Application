@@ -1,0 +1,46 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- <link rel="stylesheet" href="/css/register.css" /> -->
+
+    <div class="formContainer-signup container">
+        <div class="loginForm">
+            <h1 class="loginH1">Edit Profile</h1>
+            <!-- <div class="card-text"> -->
+
+                <form id="form" action="<%= action %>" method="POST" enctype="multipart/form-data">
+                    <!-- <img src="<%= user.avatar.rounded %>" alt="Your current avatar"> -->
+                    <div id="error"></div>
+                    <div class="formGrid">
+                        <div class="formSection">
+                            <label for="avatar" class="formLabel">Update Avatar</label>
+                            <div class="formInput-file__container">
+                                <label for="file" class="formInput-file">
+                                    <div id="fileLabel" class="formInput-file__flex">Choose image </div>
+                                </label>
+                            </div>
+                            <input id="file" type="file" class="formInput-file" name="avatar" onchange="pressed()">
+                        </div>
+                        
+                        <div class="formSection">
+                            <label for="firstName" class="formLabel">First Name</label>
+                            <input type="text" name="firstName" class="formInput" id="firstName" value="<%= user.firstName %>" required>
+                        </div>
+                        <div class="formSection">
+                            <label for="lastName" class="formLabel">Last Name</label>
+                            <input type="text" name="lastName" class="formInput" id="lastName" value="<%= user.lastName %>" required>
+                        </div>
+                        <div class="formSection">
+                            <label for="phoneNumber" class="formLabel">Phone Number</label>
+                            <input type="text" name="phoneNumber" class="formInput" id="phoneNumber" value="<%= user.phoneNumber %>" required>
+                        </div>
+                    </div>
+                        <div class="formSection">
+                            <button type="submit" class="formSubmitButton">Submit</button>
+                        </div>
+                    
+</form>
+
+
+            <!-- </div> -->
+        </div>
+    </div>
